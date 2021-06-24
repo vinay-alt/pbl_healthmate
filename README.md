@@ -6,10 +6,10 @@ This is a health app which will take your symptoms and how you are feeling as an
 
 ### Technologies
 
-- Application is built with Android Studio IDE.
-- It uses XML at frontend and Java at the backend. 
+- Application is built with ```Android Studio IDE```.
+- It uses ```XML``` at frontend and ```Java``` at the backend. 
 - Along with java it also uses some machine learning models for processing user information and for providing user with appropriate results.
-- As a part of machine learning, A ML model is built with python and jupyter notebook and some disease symptoms data.
-- A ML pipeline is built using scikit learn and dimensionality reduction using PCA and model training using descision tree algorithm is performed as the steps in the pipeline.
-- The model makes prediction with the accuracy of 92.59% 
+- As a part of machine learning, A ML model is built with ```Python``` and ```Jupyter Notebook``` and some disease symptoms data.
+- A ML pipeline is built using ```scikit-learn``` and dimensionality reduction using ```PCA``` and model training using ```Descision Tree``` algorithm is performed as the steps in the pipeline.
+- The model makes prediction with the accuracy of ```92.59%``` 
 
