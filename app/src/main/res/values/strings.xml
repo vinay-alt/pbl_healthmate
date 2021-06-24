@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HealthMate</string>
+    <string name="healthmate">HealthMate</string>
+
+    <string name="firsttext">Do you have health problems? Are you facing various health issues? Aren\'t you able to manage your health</string>
+    <string name="secondtext">Don\'t worry, We are here to help you. We support you with a variety of features to manage your health</string>
+    <string name="thirdtext">So get started and Be your own doctor.</string>
+
+    <string name="todo">TODO</string>
+
+</resources>

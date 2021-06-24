@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/slider_img"
+        android:layout_width="match_parent"
+        android:layout_height="314dp"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/th1" />
+
+    <TextView
+        android:id="@+id/slider_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        tools:text="@string/firsttext" />
+</LinearLayout>
