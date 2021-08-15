@@ -19,7 +19,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        int imgarray[] = {R.drawable.report, R.drawable.user, R.drawable.test};
+        int imgarray[] = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
         flipper = (ViewFlipper)v.findViewById(R.id.flipper);
         for (int i=0;i<imgarray.length;i++) {
             showImg(imgarray[i]);
