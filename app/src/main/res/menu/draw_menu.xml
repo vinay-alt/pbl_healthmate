@@ -9,6 +9,15 @@
         <item
             android:id="@+id/test"
             android:title="Medical Test Management"></item>
+        <item
+            android:id="@+id/test2"
+            android:title="Medical Test Management"></item>
+        <item
+            android:id="@+id/test3"
+            android:title="Medical Test Management"></item>
+        <item
+            android:id="@+id/test4"
+            android:title="Medical Test Management"></item>
     </group>
     <item android:title="Account">
         <menu>
