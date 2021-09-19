@@ -64,7 +64,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="#00000000"
-            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawableEnd="@drawable/ic_chevron_right_white_24dp"
             android:fontFamily="@font/biorhyme_extrabold"
             android:padding="30dp"
             android:onClick="next"

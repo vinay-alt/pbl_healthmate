@@ -7,20 +7,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    MenuItem mi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        mi = findViewById(R.id.login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -35,6 +39,23 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
         }
+
+//        mi.OnMenuItemClickListener(new MenuItem().OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                return false;
+//            }
+//        });
+
+//        mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent intent=new Intent(getApplicationContext(), Account.class);
+//                startActivity(intent);
+//                return true;
+//            }
+//        });
+
     }
 
     @Override
@@ -47,6 +68,10 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
             case R.id.test:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TestFragment()).commit();
+                break;
+            case R.id.login:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new UserDetailsFragment()).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
