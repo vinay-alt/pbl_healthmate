@@ -48,15 +48,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/input_back">
+                    style="@style/TextInputLayoutStyle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/height"
-                        android:background="@android:color/transparent"
                         android:hint="Height"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        >
                     </com.google.android.material.textfield.TextInputEditText>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -66,15 +65,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/input_back">
+                    style="@style/TextInputLayoutStyle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/width"
-                        android:background="@android:color/transparent"
                         android:hint="Weight"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        >
                     </com.google.android.material.textfield.TextInputEditText>
 
                 </com.google.android.material.textfield.TextInputLayout>
