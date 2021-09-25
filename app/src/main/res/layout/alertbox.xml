@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/alertlayout"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your BMI Status"
+            android:textSize="24sp"
+            android:textColor="@color/red"
+            android:textStyle="bold"></TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:src="@drawable/chart"
+            android:layout_gravity="center"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/ans_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:text=""
+            android:layout_gravity="center"></TextView>
+</LinearLayout>
