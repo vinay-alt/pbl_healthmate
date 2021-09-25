@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -28,6 +32,8 @@ public class HomeFragment extends Fragment {
     Dialog dialog;
     TextInputLayout height, weight;
     TextView out;
+    ListView listView;
+    Animation listanim;
 
     @Nullable
     @Override
@@ -39,6 +45,7 @@ public class HomeFragment extends Fragment {
             showImg(imgarray[i]);
         }
 
+        listView = v.findViewById(R.id.listview);
         bmi_button = v.findViewById(R.id.bmi);
         height = v.findViewById(R.id.height_parent);
         weight = v.findViewById(R.id.weight_parent);
@@ -69,14 +76,18 @@ public class HomeFragment extends Fragment {
         ht = ht/100;
         bmi = wt/(ht*ht);
         String ans = output(bmi,ht, wt);;
-        createDialog(v, ans);
-        Button yes = dialog.findViewById(R.id.yes);
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+//        createDialog(v, ans);
+
+        listanim = AnimationUtils.loadAnimation(getContext(), R.anim.letsgo);
+        listView.setAnimation(listanim);
+        String[] arr = new String[1];
+        arr[0] = ans;
+        BmiAdapter ba = new BmiAdapter(getContext(), R.layout.alertbox, arr);
+        listView.setAdapter(ba);
+    }
+
+    public void removeEle(View v) {
+        listView.removeAllViews();
     }
 
     public static float round(float d, int decimalPlace) {
