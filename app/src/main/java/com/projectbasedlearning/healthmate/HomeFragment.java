@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
+import java.util.zip.Inflater;
 
 public class HomeFragment extends Fragment {
 
@@ -32,8 +33,9 @@ public class HomeFragment extends Fragment {
     Dialog dialog;
     TextInputLayout height, weight;
     TextView out;
-    ListView listView;
+    Button close_lay;
     Animation listanim;
+    LinearLayout lay_bmi;
 
     @Nullable
     @Override
@@ -45,7 +47,9 @@ public class HomeFragment extends Fragment {
             showImg(imgarray[i]);
         }
 
-        listView = v.findViewById(R.id.listview);
+
+//        listView = v.findViewById(R.id.listview);
+        lay_bmi = v.findViewById(R.id.lay_bmi);
         bmi_button = v.findViewById(R.id.bmi);
         height = v.findViewById(R.id.height_parent);
         weight = v.findViewById(R.id.weight_parent);
@@ -56,6 +60,7 @@ public class HomeFragment extends Fragment {
                 CalculateBmi(v);
             }
         });
+
 
         return v;
     }
@@ -75,39 +80,26 @@ public class HomeFragment extends Fragment {
         float wt = Float.parseFloat(weight.getEditText().getText().toString().trim());
         ht = ht/100;
         bmi = wt/(ht*ht);
-        String ans = output(bmi,ht, wt);;
-//        createDialog(v, ans);
-
+        String ans = output(bmi,ht, wt);
         listanim = AnimationUtils.loadAnimation(getContext(), R.anim.letsgo);
-        listView.setAnimation(listanim);
-        String[] arr = new String[1];
-        arr[0] = ans;
-        BmiAdapter ba = new BmiAdapter(getContext(), R.layout.alertbox, arr);
-        listView.setAdapter(ba);
-    }
-
-    public void removeEle(View v) {
-        listView.removeAllViews();
+        final View alertview = getLayoutInflater().inflate(R.layout.alertbox, null, false);
+        lay_bmi.addView(alertview);
+        alertview.setAnimation(listanim);
+        TextView out = alertview.findViewById(R.id.ans_text);
+        out.setText(ans);
+        close_lay = alertview.findViewById(R.id.close);
+        close_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lay_bmi.removeView(alertview);
+            }
+        });
     }
 
     public static float round(float d, int decimalPlace) {
         BigDecimal bd = new BigDecimal(Float.toString(d));
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
-    }
-
-    public void createDialog(View v, String ans) {
-        dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.alertbox);
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP) {
-            dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.slider_back));
-        }
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.setCancelable(true);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
-        out =  dialog.findViewById(R.id.ans_text);
-        out.setText(ans);
-        dialog.show();
     }
 
     public String output(float bmi, float ht, float wt) {
