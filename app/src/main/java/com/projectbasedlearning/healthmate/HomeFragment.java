@@ -46,22 +46,16 @@ public class HomeFragment extends Fragment {
         for (int i=0;i<imgarray.length;i++) {
             showImg(imgarray[i]);
         }
-
-
-//        listView = v.findViewById(R.id.listview);
         lay_bmi = v.findViewById(R.id.lay_bmi);
         bmi_button = v.findViewById(R.id.bmi);
         height = v.findViewById(R.id.height_parent);
         weight = v.findViewById(R.id.weight_parent);
-
         bmi_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CalculateBmi(v);
             }
         });
-
-
         return v;
     }
 
@@ -119,4 +113,6 @@ public class HomeFragment extends Fragment {
         }
         return ans;
     }
+
+
 }

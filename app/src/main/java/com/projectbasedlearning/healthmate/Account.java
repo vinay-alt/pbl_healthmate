@@ -20,6 +20,7 @@ public class Account extends AppCompatActivity {
 
     ViewPager viewPager;
     Button loginbt, signupbt;
+    TextView forget;
     int currentposition;
     AccountAdaptor accountAdaptor;
 
@@ -27,12 +28,14 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
-
         viewPager = findViewById(R.id.account_pager);
         loginbt = findViewById(R.id.loginbt);
         signupbt = findViewById(R.id.signupbt);
+        forget = findViewById(R.id.forget);
         accountAdaptor = new AccountAdaptor(this);
         viewPager.setAdapter(accountAdaptor);
+
+
     }
 
     public void next(View view){
@@ -43,6 +46,11 @@ public class Account extends AppCompatActivity {
     public void prev(View view){
         viewPager.setCurrentItem(currentposition-1);
 
+    }
+
+    public void change(View view) {
+        Intent i = new Intent(this, ForgetPassword.class);
+        startActivity(i);
     }
 
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
@@ -64,7 +72,8 @@ public class Account extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, HomeScreen.class);
-        startActivity(i);
+//        Intent i = new Intent(this, HomeScreen.class);
+//        startActivity(i);
+        this.finish();
     }
 }
