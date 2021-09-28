@@ -39,23 +39,6 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
         }
-
-//        mi.OnMenuItemClickListener(new MenuItem().OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                return false;
-//            }
-//        });
-
-//        mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                Intent intent=new Intent(getApplicationContext(), Account.class);
-//                startActivity(intent);
-//                return true;
-//            }
-//        });
-
     }
 
     @Override
@@ -73,13 +56,13 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new UserDetailsFragment()).commit();
                 break;
-            case R.id.login:
-                Intent i = new Intent(this, Account.class);
-                startActivity(i);
             case R.id.setting:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SettingFragment()).commit();
                 break;
+            case R.id.login:
+                Intent i = new Intent(this, Account.class);
+                startActivity(i);   
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

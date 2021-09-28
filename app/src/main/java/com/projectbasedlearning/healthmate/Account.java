@@ -19,7 +19,8 @@ import java.util.zip.Inflater;
 public class Account extends AppCompatActivity {
 
     ViewPager viewPager;
-    Button loginbt, signupbt, forget;
+    Button loginbt, signupbt;
+    TextView forget;
     int currentposition;
     AccountAdaptor accountAdaptor;
 
@@ -71,7 +72,8 @@ public class Account extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, HomeScreen.class);
-        startActivity(i);
+//        Intent i = new Intent(this, HomeScreen.class);
+//        startActivity(i);
+        this.finish();
     }
 }

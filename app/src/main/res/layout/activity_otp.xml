@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="A one time password is sent to your phone number."
+        android:text="Reset Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,22 +52,65 @@
             android:text="Please Enter an OTP that we sent on 7038202860 and click on verify"
             android:textAlignment="center"></TextView>
 
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/newpass"-->
+<!--            style="@style/TextInputLayoutStyle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="20dp"-->
+<!--            app:passwordToggleEnabled="true"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="20dp">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:drawableStart="@drawable/ic_lock_black_24dp"-->
+<!--                android:hint=" New Password"-->
+<!--                android:text=""-->
+<!--                android:inputType="number"-->
+<!--                android:textSize="15sp"></com.google.android.material.textfield.TextInputEditText>-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newpass"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true"
             android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/otp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:drawableLeft="@drawable/ic_lock_black_24dp"
-                android:hint=" OTP"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:hint=" New Password"
                 android:text=""
-                android:inputType="number"
+                android:inputType="textPassword"
+                android:textSize="15sp"></com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/repass"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            app:passwordToggleEnabled="true"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:hint=" Re-Enter Password"
+                android:text=""
+                android:inputType="textPassword"
                 android:textSize="15sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
