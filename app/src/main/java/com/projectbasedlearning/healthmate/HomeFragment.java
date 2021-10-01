@@ -3,6 +3,7 @@ package com.projectbasedlearning.healthmate;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -19,11 +21,20 @@ import android.widget.ViewFlipper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.zip.Inflater;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
 
@@ -36,7 +47,11 @@ public class HomeFragment extends Fragment {
     Button close_lay;
     Animation listanim;
     LinearLayout lay_bmi;
-
+    private RecyclerView newsRV;
+    private ArrayList<Articles> articlesArrayList;
+    private NewsRVAdaptor newsRVAdaptor;
+    ArrayList<Articles> articles;
+    ProgressBar loading;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +61,7 @@ public class HomeFragment extends Fragment {
         for (int i=0;i<imgarray.length;i++) {
             showImg(imgarray[i]);
         }
+        newsRV = v.findViewById(R.id.newsrv);
         lay_bmi = v.findViewById(R.id.lay_bmi);
         bmi_button = v.findViewById(R.id.bmi);
         height = v.findViewById(R.id.height_parent);
@@ -53,10 +69,15 @@ public class HomeFragment extends Fragment {
         bmi_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                CalculateBmi(v);
                 validatehw(v);
             }
         });
+        articlesArrayList = new ArrayList<>();
+        newsRVAdaptor = new NewsRVAdaptor(articlesArrayList, getContext());
+        newsRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        newsRV.setAdapter(newsRVAdaptor);
+        loading = v.findViewById(R.id.loading);
+        getNews(v);
         return v;
     }
 
@@ -136,6 +157,36 @@ public class HomeFragment extends Fragment {
             ans = "Error";
         }
         return ans;
+    }
+
+    public void getNews(View v){
+        loading.setVisibility(View.VISIBLE);
+        String url = "https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=e848d779def74a3b9e97becf7bcc0bca";
+        String BASE_URL = "https://newsapi.org/";
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+        Call<NewsModel> call;
+        call = retrofitAPI.getNews(url);
+        call.enqueue(new Callback<NewsModel>() {
+            @Override
+            public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
+                NewsModel newsModel = response.body();
+                ArrayList<Articles> articles = newsModel.getArticles();
+                for (int i=0;i<articles.size();i++) {
+                    articlesArrayList.add(new Articles(articles.get(i).getTitle(), articles.get(i).getDescription(), articles.get(i).getUrlToImage(), articles.get(i).getUrl(), articles.get(i).getContent()));
+                }
+                newsRVAdaptor.notifyDataSetChanged();
+                loading.setVisibility(View.GONE);
+            }
+            @Override
+            public void onFailure(Call<NewsModel> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed to load articles", Toast.LENGTH_SHORT).show();
+                loading.setVisibility(View.GONE);
+            }
+        });
     }
 
 

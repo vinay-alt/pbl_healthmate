@@ -3,11 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-
-
-
-<!--    android:elevation="10dp"-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -96,22 +93,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-<!--                <ListView-->
-<!--                    android:id="@+id/listview"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent" />-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@color/darkred"
                     android:paddingBottom="1dp">
                     <TextView
@@ -125,10 +117,23 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/newsrv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:orientation="vertical"
+                    tools:listitem="@layout/news"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
 
                 </androidx.recyclerview.widget.RecyclerView>
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/loading"
+                    android:visibility="visible"
+                    ></ProgressBar>
             </LinearLayout>
 
 
