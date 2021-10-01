@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="20dp"
-        android:background="@drawable/back_button"
+        android:background="@drawable/button_state"
         android:text="verify"
         android:textColor="@color/colorPrimaryDark">   </Button>
 

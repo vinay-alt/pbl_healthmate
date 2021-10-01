@@ -27,8 +27,9 @@ public class Otp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Otp.this, "changed successfully", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Otp.this, Account.class);
-                startActivity(i);
+//                Intent i = new Intent(Otp.this, Account.class);
+//                startActivity(i);
+                finish();
             }
         });
     }

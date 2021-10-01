@@ -53,7 +53,8 @@ public class HomeFragment extends Fragment {
         bmi_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CalculateBmi(v);
+//                CalculateBmi(v);
+                validatehw(v);
             }
         });
         return v;
@@ -69,25 +70,48 @@ public class HomeFragment extends Fragment {
         flipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
     }
 
-    public void CalculateBmi(View v) {
-        float ht = Float.parseFloat(height.getEditText().getText().toString().trim());
-        float wt = Float.parseFloat(weight.getEditText().getText().toString().trim());
+    public void validatehw(View v) {
+        String hts = height.getEditText().getText().toString().trim();
+        String wts = weight.getEditText().getText().toString().trim();
+        if (hts.length()>0 && wts.length()>0) {
+            try {
+                float ht = Float.parseFloat(height.getEditText().getText().toString().trim());
+                float wt = Float.parseFloat(weight.getEditText().getText().toString().trim());
+                CalculateBmi(v, ht, wt);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), "Invalid height or weight", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        } else if(hts.length()<=0 && wts.length()>0) {
+            Toast.makeText(getContext(), "Height is Empty", Toast.LENGTH_SHORT).show();
+        } else if (wts.length()<=0 && hts.length()>0) {
+            Toast.makeText(getContext(), "Weight is Empty", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Both Fields are Empty", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void CalculateBmi(View v,float ht, float wt) {
+//        float ht = Float.parseFloat(height.getEditText().getText().toString().trim());
+//        float wt = Float.parseFloat(weight.getEditText().getText().toString().trim());
         ht = ht/100;
         bmi = wt/(ht*ht);
         String ans = output(bmi,ht, wt);
         listanim = AnimationUtils.loadAnimation(getContext(), R.anim.letsgo);
         final View alertview = getLayoutInflater().inflate(R.layout.alertbox, null, false);
-        lay_bmi.addView(alertview);
-        alertview.setAnimation(listanim);
-        TextView out = alertview.findViewById(R.id.ans_text);
-        out.setText(ans);
-        close_lay = alertview.findViewById(R.id.close);
-        close_lay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lay_bmi.removeView(alertview);
-            }
-        });
+        if (lay_bmi.findViewById(R.id.alertlayout) == null) {
+            lay_bmi.addView(alertview);
+            alertview.setAnimation(listanim);
+            TextView out = alertview.findViewById(R.id.ans_text);
+            out.setText(ans);
+            close_lay = alertview.findViewById(R.id.close);
+            close_lay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    lay_bmi.removeView(alertview);
+                }
+            });
+        }
     }
 
     public static float round(float d, int decimalPlace) {
@@ -116,3 +140,7 @@ public class HomeFragment extends Fragment {
 
 
 }
+
+
+
+//e848d779def74a3b9e97becf7bcc0bca
