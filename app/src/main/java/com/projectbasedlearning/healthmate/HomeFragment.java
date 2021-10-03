@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -55,6 +56,7 @@ public class HomeFragment extends Fragment {
     private NewsRVAdaptor newsRVAdaptor;
     ArrayList<Articles> articles;
     ProgressBar loading;
+    ProgressBar bannerloading;
     RecyclerView banner;
     LinearLayoutManager layoutManager;
 
@@ -79,6 +81,7 @@ public class HomeFragment extends Fragment {
         newsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         newsRV.setAdapter(newsRVAdaptor);
         loading = v.findViewById(R.id.loading);
+        bannerloading = v.findViewById(R.id.bannerloading);
         getNews(v);
         return v;
     }
@@ -95,6 +98,12 @@ public class HomeFragment extends Fragment {
 
         LinearSnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(banner);
+//        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(RecyclerVi00000000, 220);
+//        RecyclerView.LayoutParams rlp = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, 220);
+//
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 450);
+        banner.setLayoutParams(lp);
+        bannerloading.setVisibility(View.GONE);
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
