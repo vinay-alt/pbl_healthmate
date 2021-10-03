@@ -16,8 +16,8 @@ This is a health app which will take your symptoms and how you are feeling as an
 
 ### Project Links
 
-[PBL Research Paper:](https://docs.google.com/document/d/17X2bMzrFw-IVMQ8rPjvMPZ4JEGdUtAXWc9IZyJGzDVc/edit?usp=sharing)
+- [PBL Research Paper:](https://docs.google.com/document/d/17X2bMzrFw-IVMQ8rPjvMPZ4JEGdUtAXWc9IZyJGzDVc/edit?usp=sharing)
 
-- Machine Learning Model: https://github.com/vinay-alt/pbl_ml
+- [Machine Learning Model:] (https://github.com/vinay-alt/pbl_ml)
 
-- PBL Architecture: https://1drv.ms/p/s!BJYvjubkDogsg-xk9NH_lzgA7xOy-Q?e=Vko5C1
+- [PBL Architecture:] (https://1drv.ms/p/s!BJYvjubkDogsg-xk9NH_lzgA7xOy-Q?e=Vko5C1)
