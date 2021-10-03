@@ -22,12 +22,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.squareup.picasso.Picasso;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.zip.Inflater;
 
 import retrofit2.Call;
@@ -37,7 +41,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
-
     ViewFlipper flipper;
     Button bmi_button;
     float bmi;
@@ -52,15 +55,14 @@ public class HomeFragment extends Fragment {
     private NewsRVAdaptor newsRVAdaptor;
     ArrayList<Articles> articles;
     ProgressBar loading;
+    RecyclerView banner;
+    LinearLayoutManager layoutManager;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         int imgarray[] = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
-        flipper = (ViewFlipper)v.findViewById(R.id.flipper);
-        for (int i=0;i<imgarray.length;i++) {
-            showImg(imgarray[i]);
-        }
         newsRV = v.findViewById(R.id.newsrv);
         lay_bmi = v.findViewById(R.id.lay_bmi);
         bmi_button = v.findViewById(R.id.bmi);
@@ -72,7 +74,7 @@ public class HomeFragment extends Fragment {
                 validatehw(v);
             }
         });
-        articlesArrayList = new ArrayList<>();
+        articlesArrayList = new ArrayList<Articles>();
         newsRVAdaptor = new NewsRVAdaptor(articlesArrayList, getContext());
         newsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         newsRV.setAdapter(newsRVAdaptor);
@@ -81,14 +83,29 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    public void showImg(int img){
-        ImageView imageview = new ImageView(getContext());
-        imageview.setBackgroundResource(img);
-        flipper.addView(imageview);
-        flipper.setFlipInterval(3000);
-        flipper.setAutoStart(true);
-        flipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
-        flipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
+    public void setBanner(View v) {
+        banner = v.findViewById(R.id.banner);
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        banner.setLayoutManager(layoutManager);
+        Log.e("hudgyhsbknlmuiyf", ""+articlesArrayList.size());
+        ArrayList<Articles> listOfStrings = new ArrayList<Articles>(articlesArrayList.subList(0,3).size());
+        listOfStrings.addAll(articlesArrayList.subList(0,3));
+        AutoScrollAdapter scrollAdapter = new AutoScrollAdapter(getActivity(), listOfStrings);
+        banner.setAdapter(scrollAdapter);
+
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(banner);
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (layoutManager.findLastCompletelyVisibleItemPosition() <  scrollAdapter.getItemCount()-1) {
+                    layoutManager.smoothScrollToPosition(banner, new RecyclerView.State(), layoutManager.findLastCompletelyVisibleItemPosition()+1);
+                } else {
+                    layoutManager.smoothScrollToPosition(banner, new RecyclerView.State(), 0);
+                }
+            }
+        }, 0, 3000);
     }
 
     public void validatehw(View v) {
@@ -175,11 +192,12 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
                 NewsModel newsModel = response.body();
                 ArrayList<Articles> articles = newsModel.getArticles();
-                for (int i=0;i<articles.size();i++) {
+                for (int i=3;i<articles.size();i++) {
                     articlesArrayList.add(new Articles(articles.get(i).getTitle(), articles.get(i).getDescription(), articles.get(i).getUrlToImage(), articles.get(i).getUrl(), articles.get(i).getContent()));
                 }
                 newsRVAdaptor.notifyDataSetChanged();
                 loading.setVisibility(View.GONE);
+                setBanner(v);
             }
             @Override
             public void onFailure(Call<NewsModel> call, Throwable t) {
@@ -191,7 +209,3 @@ public class HomeFragment extends Fragment {
 
 
 }
-
-
-
-//e848d779def74a3b9e97becf7bcc0bca

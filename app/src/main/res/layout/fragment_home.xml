@@ -29,12 +29,13 @@
                 android:background="@drawable/slider_back"
                 android:clipToPadding="false"
                 android:layout_margin="10dp">
-                <ViewFlipper
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:id="@+id/flipper"
-                    android:layout_gravity="center">
-                </ViewFlipper>
+                    android:layout_height="220dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
             </LinearLayout>
 
             <LinearLayout
