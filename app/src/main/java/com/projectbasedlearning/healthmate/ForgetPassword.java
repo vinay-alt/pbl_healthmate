@@ -28,14 +28,13 @@ public class ForgetPassword extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createDialog(v);
+                GenerateOtp(v);
             }
         });
 
     }
 
-    public void createDialog(View v) {
-        num = number.getEditText().getText().toString();
+    public void createDialog(View v, String num) {
         final Dialog dialog = new Dialog(ForgetPassword.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setTitle("Reset Password");
@@ -53,9 +52,37 @@ public class ForgetPassword extends AppCompatActivity {
                 Intent i = new Intent(ForgetPassword.this, Otp.class);
                 startActivity(i);
                 finish();
+
             }
         });
         dialog.show();
+    }
+
+    public void GenerateOtp(View v){
+        num = number.getEditText().getText().toString();
+        if (!ValidatePhoneNumber(num)) {
+            return;
+        }
+        Toast.makeText(this, "Your Otp is ****", Toast.LENGTH_SHORT).show();
+        createDialog(v, num);
+    }
+
+    public boolean ValidatePhoneNumber(String valphn) {
+        String checkspaces = "\\A\\w{1,20}\\z";
+        if (valphn.isEmpty()) {
+            number.setError("Field cannot be empty");
+            return false;
+        } else if (valphn.length()<10) {
+            number.setError("atleast 10 characters required");
+            return false;
+        } else if (!valphn.matches(checkspaces)) {
+            number.setError("No white spaces are allowed");
+            return false;
+        } else {
+            number.setError(null);
+            number.setErrorEnabled(false);
+            return true;
+        }
     }
 
     @Override

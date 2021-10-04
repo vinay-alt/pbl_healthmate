@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Yash/PBL/pbl_healthmate/app/src/main/res/layout/activity_account.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Yash/PBL/pbl_healthmate/app/src/main/res/layout/fragment_home.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Yash/PBL/pbl_healthmate/app/src/main/res/layout/login_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Yash/PBL/pbl_healthmate/app/src/main/res/layout/signup_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/varad/AndroidStudioProjects/pbl_healthmate/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/varad/AndroidStudioProjects/pbl_healthmate/app/src/main/res/layout/activity_on_board.xml" value="0.1" />
         <entry key="..\:/Users/varad/AndroidStudioProjects/pbl_healthmate/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -16,7 +20,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

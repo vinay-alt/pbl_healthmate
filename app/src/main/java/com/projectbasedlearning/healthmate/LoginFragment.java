@@ -16,8 +16,6 @@ import androidx.fragment.app.Fragment;
 
 public class LoginFragment extends Fragment {
 
-    Button forget;
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.login_fragment, container, false);
         return v;

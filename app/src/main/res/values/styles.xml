@@ -22,6 +22,10 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
+    <style name="drawItemStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
 </resources>
 
 <!--    -->
