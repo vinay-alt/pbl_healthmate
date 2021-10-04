@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/login_screen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -32,8 +32,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp"></TextView>
 
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/username_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -41,10 +41,11 @@
                 style="@style/TextInputLayoutStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/username"
                     android:textSize="15sp"
+                    android:text=""
                     android:drawableLeft="@drawable/ic_person_black_24dp"
                     android:hint=" Username"
                     >
@@ -54,6 +55,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/password_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="15dp"
@@ -61,11 +63,12 @@
                 style="@style/TextInputLayoutStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/password"
                     android:inputType="textPassword"
                     android:textSize="15sp"
+                    android:text=""
                     android:drawableStart="@drawable/ic_lock_black_24dp"
                     android:hint=" Password"
                     >
@@ -90,17 +93,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/button_state"
-                android:text="Login"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
+                android:background="@drawable/button_state"
+                android:onClick="Login"
+                android:text="Login"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText"
+                app:layout_constraintTop_toBottomOf="@+id/password"
                 app:layout_constraintVertical_bias="0.101" />
 
             <Button
@@ -120,7 +124,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button" />
-
 
         </LinearLayout>
 
