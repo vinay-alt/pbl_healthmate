@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@color/darkred"
+                android:text="select the file"
+                android:textSize="20sp">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:background="@color/lightred"
+                    android:layout_margin="10dp"
+                    android:paddingVertical="20dp"
+                    android:src="@drawable/ic_insert_drive_file_black_24dp">
+                </ImageView>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/darkred"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="PDF"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:paddingVertical="20dp"
+                    android:layout_weight="9"
+                    android:background="@color/lightred"
+                    android:src="@drawable/ic_insert_photo_black_24dp">
+                </ImageView>
+                <TextView
+                    android:textAlignment="center"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/darkred"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="IMAGE"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/file_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/TextInputLayoutStyle">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="File name"></com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            >
+
+            <Button
+                android:id="@+id/uploaddoc"
+                android:background="@drawable/button_state"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload">
+            </Button>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
