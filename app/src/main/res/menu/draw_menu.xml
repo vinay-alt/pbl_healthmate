@@ -15,6 +15,10 @@
             android:id="@+id/user_detail"
             android:icon="@drawable/ic_description_black_24dp"
             android:title="User Details Management"></item>
+        <item
+            android:id="@+id/symptom_details"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="Symptom Details Management"></item>
     </group>
     <item android:title="Account"
         android:icon="@drawable/ic_person_black_24dp">
