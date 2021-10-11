@@ -83,6 +83,7 @@
                 android:layout_gravity="right"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="20dp"
+                android:minHeight="48dp"
                 android:onClick="change"
                 android:text="forget password"
                 android:textColor="@color/darkred"

@@ -63,6 +63,10 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new UserDetailsFragment()).commit();
                 break;
+            case R.id.symptom_details:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SymptomDetailsFragment()).commit();
+                break;
             case R.id.setting:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SettingFragment()).commit();
