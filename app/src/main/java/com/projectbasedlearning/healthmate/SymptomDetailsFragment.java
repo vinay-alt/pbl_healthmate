@@ -26,19 +26,14 @@ public class SymptomDetailsFragment extends Fragment {
     boolean[] selectedsymp;
     ArrayList<Integer> symplist = new ArrayList<>();
     String[] sympArray= {"fever","cough","flu"};
-
-
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_symptom_details, container, false);
         symp = v.findViewById(R.id.symptoms);
-
         selectedsymp = new boolean[sympArray.length];
         symp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder =new AlertDialog.Builder(
-                        getContext()
-                );
+                AlertDialog.Builder builder =new AlertDialog.Builder(getContext());
                 builder.setTitle("Select Symptoms");
                 builder.setCancelable(false);
                 builder.setMultiChoiceItems(sympArray, selectedsymp, new DialogInterface.OnMultiChoiceClickListener() {
@@ -92,12 +87,8 @@ public class SymptomDetailsFragment extends Fragment {
                     }
                 });
                 builder.show();
-
             }
         });
-
-//
-
         return v;
 
     }
