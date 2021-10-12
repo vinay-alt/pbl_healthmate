@@ -1,6 +1,6 @@
 package com.projectbasedlearning.healthmate;
 
-import android.app.FragmentManager;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -17,7 +18,8 @@ public class UserDetailsFragment extends Fragment {
 
     TabLayout tabLayout;
     ViewPager viewPager;
-
+    FragmentManager fm;
+    UserDetailsSwitch adapter;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 //        if (condition to check whether user is login or not) {
@@ -34,8 +36,10 @@ public class UserDetailsFragment extends Fragment {
 
 
         // final UserDetailsSwitch adapter = new UserDetailsSwitch(getSupportFragmentManager(), this, tabLayout.getTabCount());
-        final UserDetailsSwitch adapter = new UserDetailsSwitch(new FragmentManager(this), getContext(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
+//        fm = new FragmentManager(getContext());
+//        adapter = new UserDetailsSwitch(new FragmentManager(getContext()), getContext(), tabLayout.getTabCount());
+//        viewPager.setAdapter(adapter);
+        adapter = new UserDetailsSwitch(getContext(), tabLayout.getTabCount());
 
         viewPager.addOnAdapterChangeListener((ViewPager.OnAdapterChangeListener) new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
