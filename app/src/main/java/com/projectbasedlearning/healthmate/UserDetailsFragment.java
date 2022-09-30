@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
+//import androidx.viewpager.widget.ViewPager;
+//import android.support.v4.view.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -26,10 +28,11 @@ public class UserDetailsFragment extends Fragment {
 //            Intent i = new Intent(getContext(), Account.class);
 //            startActivity(i);
 //        }
-        tabLayout = getView().findViewById(R.id.tab_layout);
-        viewPager = getView().findViewById(R.id.view_pager);
+
         View v=inflater.inflate(R.layout.user_details_fragment, container, false);
 
+        tabLayout = v.findViewById(R.id.tab_layout);
+        viewPager = v.findViewById(R.id.view_pager);
         tabLayout.addTab(tabLayout.newTab().setText("Account"));
         tabLayout.addTab(tabLayout.newTab().setText("Medical"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -41,7 +44,9 @@ public class UserDetailsFragment extends Fragment {
 //        viewPager.setAdapter(adapter);
         adapter = new UserDetailsSwitch(getContext(), tabLayout.getTabCount());
 
-        viewPager.addOnAdapterChangeListener((ViewPager.OnAdapterChangeListener) new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setupWithViewPager(viewPager);
+//        viewPager.setAdapter(adapter);
+//        viewPager.addOnAdapterChangeListener((ViewPager.OnAdapterChangeListener) new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         return v;
 
